@@ -1,0 +1,16 @@
+.todoProgress {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #e07c7c;
+  
+  padding: 1rem 2rem;
+}
+
+.title {
+  color: white;
+}
+
+.textMuted {
+  color: rgba($color: #fff, $alpha: 0.7);
+}

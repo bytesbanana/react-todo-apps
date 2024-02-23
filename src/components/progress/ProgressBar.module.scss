@@ -1,0 +1,12 @@
+.progress {
+  border: 0px;
+
+  background-color: #3b3b3b;
+  overflow: hidden;
+
+  div {
+    height: 6px;
+    transition: width 300ms ease-in-out;
+    background-color: white;
+  }
+}
