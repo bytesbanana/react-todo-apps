@@ -4,7 +4,7 @@ import styles from "./App.module.scss";
 
 function App() {
   return (
-    <div>
+    <div className={styles.layout}>
       <div className={styles.todoCard}>
         <TodoProgress />
         <TodoTasks />
