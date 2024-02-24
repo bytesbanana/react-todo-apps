@@ -1,10 +1,8 @@
 import { ComponentProps } from "react";
 import styles from "./TodoItem.module.scss";
-import { useMutation, useQueryClient } from "react-query";
-import { deleteTodo, putTodo } from "../../lib/apis";
-import { Todo } from "../../lib/definition";
 import GgSpinner from "../ui/Icon";
 import clsx from "clsx";
+import { useTodoMutation } from "./useTodoMutation";
 
 interface TodoItemProps extends ComponentProps<"div"> {
   todoId: number;
@@ -13,30 +11,31 @@ interface TodoItemProps extends ComponentProps<"div"> {
 }
 
 export const TodoItem = ({ todoId: id, title, completed }: TodoItemProps) => {
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
+  const { updateTodo, deleteTodo, isMutating } = useTodoMutation();
 
-  const updateTodoMutation = useMutation(
-    ({ id, title, completed }: Todo) =>
-      putTodo({
-        id,
-        title,
-        completed,
-      }),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("todos");
-      },
-    }
-  );
+  // const updateTodoMutation = useMutation(
+  //   ({ id, title, completed }: Todo) =>
+  //     putTodo({
+  //       id,
+  //       title,
+  //       completed,
+  //     }),
+  //   {
+  //     onSuccess: () => {
+  //       queryClient.invalidateQueries("todos");
+  //     },
+  //   }
+  // );
 
-  const deleteTodoMutation = useMutation((id: number) => deleteTodo(id), {
-    onSuccess: () => {
-      queryClient.invalidateQueries("todos");
-    },
-  });
+  // const deleteTodoMutation = useMutation((id: number) => deleteTodo(id), {
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries("todos");
+  //   },
+  // });
 
-  const isMutating =
-    updateTodoMutation.isLoading || deleteTodoMutation.isLoading;
+  // const isMutating =
+  //   updateTodoMutation.isLoading || deleteTodoMutation.isLoading;
 
   return (
     <div key={id} className={styles.todoItem}>
@@ -54,7 +53,7 @@ export const TodoItem = ({ todoId: id, title, completed }: TodoItemProps) => {
             name={`${id}-completed`}
             checked={!!completed}
             onChange={(e) =>
-              updateTodoMutation.mutate({
+              updateTodo.mutate({
                 id,
                 title,
                 completed: e.target.checked,
@@ -66,10 +65,7 @@ export const TodoItem = ({ todoId: id, title, completed }: TodoItemProps) => {
       </div>
       <div>
         <button disabled={isMutating}>Edit</button>
-        <button
-          disabled={isMutating}
-          onClick={() => deleteTodoMutation.mutate(id)}
-        >
+        <button disabled={isMutating} onClick={() => deleteTodo.mutate(id)}>
           Delete
         </button>
       </div>

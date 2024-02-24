@@ -2,10 +2,10 @@ import ProgressBar from "./ProgressBar";
 import styles from "./Progress.module.scss";
 import { Todo } from "../../lib/definition";
 import { useQuery } from "react-query";
-import { getTodos } from "../../lib/apis";
+import apis from "../../lib/apis";
 
 export const TodoProgress = () => {
-  const { data: todos } = useQuery<Todo[]>("todos", getTodos);
+  const { data: todos } = useQuery<Todo[]>("todos", apis.getTodos);
 
   const complete = todos?.filter((todo) => todo.completed).length || 0;
   const total = todos?.length || 1;

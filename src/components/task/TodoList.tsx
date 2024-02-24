@@ -1,12 +1,13 @@
 import styles from "./TodoList.module.scss";
 import { useQuery } from "react-query";
-import { getTodos } from "../../lib/apis";
+
 import { TodoItem } from "./TodoItem";
 import { Todo } from "../../lib/definition";
 import { useTaskStore } from "../../store/useTaskStore";
+import apis from "../../lib/apis";
 
 export const TodoList = () => {
-  const { data: todos, isLoading } = useQuery<Todo[]>("todos", getTodos);
+  const { data: todos, isLoading } = useQuery<Todo[]>("todos", apis.getTodos);
   const { visibilityFilter } = useTaskStore();
 
   if (isLoading) {
