@@ -2,7 +2,7 @@ import { ComponentProps } from "react";
 import styles from "./TodoItem.module.scss";
 import GgSpinner from "../ui/Icon";
 import clsx from "clsx";
-import { useTodoMutation } from "./useTodoMutation";
+import { useTodoMutation } from "../../hooks/useTodoMutation";
 
 interface TodoItemProps extends ComponentProps<"div"> {
   todoId: number;

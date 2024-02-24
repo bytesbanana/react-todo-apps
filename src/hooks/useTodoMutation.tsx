@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
-import { Todo } from "../../lib/definition";
-import apis from "../../lib/apis";
+import { Todo } from "../lib/definition";
+import apis from "../lib/apis";
 
 export const useTodoMutation = () => {
   const queryClient = useQueryClient();
