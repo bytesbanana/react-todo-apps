@@ -13,7 +13,7 @@ async function getTodos(): Promise<Todo[]> {
 }
 
 async function putTodo(data: Partial<Todo>): Promise<Pick<Todo, "id">> {
-  const response = await fetch(`${baseUrl}/todos/${data.id}`, {
+    const response = await fetch(`${baseUrl}/todos/${data.id}`, {
     method: "PUT",
     body: JSON.stringify(data),
     headers: {

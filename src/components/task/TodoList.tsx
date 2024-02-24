@@ -34,8 +34,8 @@ export const TodoList = () => {
 
   return (
     <div className={styles.todoList}>
-      {filteredTodos.map(({ id, title, completed }) => (
-        <TodoItem key={id} todoId={id} title={title} completed={completed} />
+      {filteredTodos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo}/>
       ))}
       {filteredTodos.length === 0 && <p className={styles.noTaskMsg}>There is no task here.</p>}
     </div>

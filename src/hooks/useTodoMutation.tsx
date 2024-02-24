@@ -2,7 +2,11 @@ import { useMutation, useQueryClient } from "react-query";
 import { Todo } from "../lib/definition";
 import apis from "../lib/apis";
 
-export const useTodoMutation = () => {
+export const useTodoMutation = ({
+  onUpdateSuccess,
+}: {
+  onUpdateSuccess: () => void;
+}) => {
   const queryClient = useQueryClient();
 
   const updateTodo = useMutation(
@@ -13,8 +17,9 @@ export const useTodoMutation = () => {
         completed,
       }),
     {
-      onSuccess: () => {
-        queryClient.invalidateQueries("todos");
+      onSuccess: async () => {
+        await queryClient.invalidateQueries("todos");
+        onUpdateSuccess();
       },
     }
   );

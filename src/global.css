@@ -1,6 +1,7 @@
 :root {
   --text-progress-muted: #ebb9b8;
   --text-white: white;
+  --text-dark: #2E2E2E;
 
   --layout-bg-color: #f5f5f5;
   --body-bg-color: #d1d0d9;
@@ -8,6 +9,8 @@
   --progress-bg-color: #3b3b3b;
   --progress-color: #fff;
   --progress-container-bg: #e07c7c;
+  
+  --todo-item-menu-button-hover-background: #f5f5f5;
 }
 
 * {
