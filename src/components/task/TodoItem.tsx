@@ -11,31 +11,7 @@ interface TodoItemProps extends ComponentProps<"div"> {
 }
 
 export const TodoItem = ({ todoId: id, title, completed }: TodoItemProps) => {
-  // const queryClient = useQueryClient();
   const { updateTodo, deleteTodo, isMutating } = useTodoMutation();
-
-  // const updateTodoMutation = useMutation(
-  //   ({ id, title, completed }: Todo) =>
-  //     putTodo({
-  //       id,
-  //       title,
-  //       completed,
-  //     }),
-  //   {
-  //     onSuccess: () => {
-  //       queryClient.invalidateQueries("todos");
-  //     },
-  //   }
-  // );
-
-  // const deleteTodoMutation = useMutation((id: number) => deleteTodo(id), {
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries("todos");
-  //   },
-  // });
-
-  // const isMutating =
-  //   updateTodoMutation.isLoading || deleteTodoMutation.isLoading;
 
   return (
     <div key={id} className={styles.todoItem}>
@@ -69,13 +45,6 @@ export const TodoItem = ({ todoId: id, title, completed }: TodoItemProps) => {
           Delete
         </button>
       </div>
-      {/* <button className={styles.todoItemMenuButton}> */}
-      {/* <SolarMenuDotsBold /> */}
-      {/* <ul className={styles.todoItemDropdown}>
-          <li>Edit</li>
-          <li>Delete</li>
-        </ul> */}
-      {/* </button> */}
     </div>
   );
 };
