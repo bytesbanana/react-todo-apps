@@ -1,12 +1,11 @@
 .progress {
   border: 0px;
-
-  background-color: #3b3b3b;
+  background-color: var(--progress-bg-color);
   overflow: hidden;
 
   div {
-    height: 6px;
+    height: 7.35px;
     transition: width 300ms ease-in-out;
-    background-color: white;
+    background-color: var(--text-white);
   }
 }
