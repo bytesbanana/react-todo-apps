@@ -1,10 +1,11 @@
 import { ComponentProps, useEffect, useRef, useState } from "react";
 import styles from "./TodoItem.module.scss";
-import GgSpinner from "../ui/Icon";
+import { GgSpinner } from "../ui/Icon";
 import clsx from "clsx";
 import { useTodoMutation } from "../../hooks/useTodoMutation";
 import { Todo } from "../../lib/definition";
 import { Button } from "../ui/Button";
+import { TodoItemDropdownMenu } from "./TodoItemDropdownMenu";
 
 type InputMode = "Default" | "Edit";
 
@@ -85,23 +86,22 @@ const CheckboxInput = ({
         className={clsx(styles.todoItemCheckbox, isLoading && styles.textMuted)}
       >
         {isLoading && <LoadingSpinner />}
-        <input
-          type="checkbox"
-          id={`${id}-completed`}
-          name={`${id}-completed`}
-          checked={!!completed}
-          onChange={onToggleCheckbox}
-        />
+        {!isLoading && (
+          <input
+            type="checkbox"
+            id={`${id}-completed`}
+            name={`${id}-completed`}
+            checked={!!completed}
+            onChange={onToggleCheckbox}
+          />
+        )}
         {title}
       </div>
-      <div>
-        <button disabled={isLoading} onClick={onEditClick}>
-          Edit
-        </button>
-        <button disabled={isLoading} onClick={onDeleteClick}>
-          Delete
-        </button>
-      </div>
+      <TodoItemDropdownMenu
+        todoId={id}
+        onDeleteClick={onDeleteClick}
+        onEditClick={onEditClick}
+      />
     </>
   );
 };
