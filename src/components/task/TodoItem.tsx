@@ -4,6 +4,7 @@ import GgSpinner from "../ui/Icon";
 import clsx from "clsx";
 import { useTodoMutation } from "../../hooks/useTodoMutation";
 import { Todo } from "../../lib/definition";
+import { Button } from "../ui/Button";
 
 type InputMode = "Default" | "Edit";
 
@@ -41,9 +42,9 @@ const TextInput = ({ title, isLoading, onSubmit }: TextInputProps) => {
           }
         }}
       />
-      <button disabled={isLoading} onClick={() => onSubmit(newTitle)}>
+      <Button disabled={isLoading} onClick={() => onSubmit(newTitle)}>
         Save
-      </button>
+      </Button>
     </div>
   );
 };
