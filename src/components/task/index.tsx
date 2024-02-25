@@ -10,6 +10,7 @@ export const TodoTasks = () => {
       <section className={styles.header}>
         <h1>Tasks</h1>
         <select
+          className={styles.select}
           onChange={(e) => {
             setVisibilityFilter(e.target.value as VisibilityFilter);
           }}
