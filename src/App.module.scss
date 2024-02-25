@@ -1,13 +1,26 @@
 .layout {
-  width: 720px;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
   border-radius: 20px;
-  background-color: var(--layout-bg-color);
 }
 
 .todoCard {
   padding: 3.875rem 6.375rem;
-  min-width: 500px;
+  max-width: 720px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  background-color: var(--todo-card-bg-color);
+}
+
+@media screen and (max-width: 425px) {
+  .layout {
+    min-width: auto;
+  }
+  .todoCard {
+    width: 100%;
+    padding: 0.25rem;
+  }
 }
