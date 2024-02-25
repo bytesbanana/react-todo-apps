@@ -6,6 +6,7 @@ import { Todo } from "../../lib/definition";
 import { useTaskStore } from "../../store/useTaskStore";
 import apis from "../../lib/apis";
 import { useMemo } from "react";
+import { AddTodoInput } from "./AddTodoInput";
 
 export const TodoList = () => {
   const { data: todos, isLoading } = useQuery<Todo[]>("todos", () => {
@@ -35,9 +36,12 @@ export const TodoList = () => {
   return (
     <div className={styles.todoList}>
       {filteredTodos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo}/>
+        <TodoItem key={todo.id} todo={todo} />
       ))}
-      {filteredTodos.length === 0 && <p className={styles.noTaskMsg}>There is no task here.</p>}
+      {filteredTodos.length === 0 && (
+        <p className={styles.noTaskMsg}>There is no task here.</p>
+      )}
+      <AddTodoInput />
     </div>
   );
 };

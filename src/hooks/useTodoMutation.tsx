@@ -2,13 +2,13 @@ import { useMutation, useQueryClient } from "react-query";
 import { Todo } from "../lib/definition";
 import apis from "../lib/apis";
 
-export const useTodoMutation = ({
-  onUpdateSuccess,
-}: {
-  onUpdateSuccess: () => void;
-}) => {
-  const queryClient = useQueryClient();
+interface Options {
+  onUpdateSuccess?: () => void;
+  onAddSuccess?: () => void;
+}
 
+export const useTodoMutation = (options?: Options) => {
+  const queryClient = useQueryClient();
   const updateTodo = useMutation(
     ({ id, title, completed }: Todo) =>
       apis.putTodo({
@@ -19,7 +19,9 @@ export const useTodoMutation = ({
     {
       onSuccess: async () => {
         await queryClient.invalidateQueries("todos");
-        onUpdateSuccess();
+        if (options?.onUpdateSuccess) {
+          options.onUpdateSuccess();
+        }
       },
     }
   );
@@ -30,11 +32,21 @@ export const useTodoMutation = ({
     },
   });
 
+  const addNewTodo = useMutation((title: string) => apis.postTodo(title), {
+    onSuccess: async () => {
+      await queryClient.invalidateQueries("todos");
+      if (options?.onAddSuccess) {
+        options.onAddSuccess();
+      }
+    },
+  });
+
   const isMutating = updateTodo.isLoading || deleteTodo.isLoading;
 
   return {
     updateTodo,
     deleteTodo,
+    addNewTodo,
     isMutating,
   };
 };

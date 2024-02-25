@@ -13,7 +13,7 @@ async function getTodos(): Promise<Todo[]> {
 }
 
 async function putTodo(data: Partial<Todo>): Promise<Pick<Todo, "id">> {
-    const response = await fetch(`${baseUrl}/todos/${data.id}`, {
+  const response = await fetch(`${baseUrl}/todos/${data.id}`, {
     method: "PUT",
     body: JSON.stringify(data),
     headers: {
@@ -35,7 +35,27 @@ async function deleteTodo(id: number): Promise<Pick<Todo, "id">> {
   });
 
   if (!response.ok) {
-    throw new Error("Failed to update delete");
+    throw new Error("Failed to delete todos");
+  }
+
+  return await response.json();
+}
+
+async function postTodo(title: string): Promise<Todo> {
+  const response = await fetch(`${baseUrl}/todos`, {
+    method: "POST",
+    body: JSON.stringify({
+      title,
+      completed: false,
+    }),
+    headers: {
+      Accept: "*/*",
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to post todo");
   }
 
   return await response.json();
@@ -45,4 +65,5 @@ export default {
   getTodos,
   putTodo,
   deleteTodo,
+  postTodo,
 };
