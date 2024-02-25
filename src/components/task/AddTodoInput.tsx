@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { useTodoMutation } from "../../hooks/useTodoMutation";
 import styles from "./AddTodoInput.module.scss";
+import { LoadingSpinner } from "../ui/LoadingSpiner";
 
 export const AddTodoInput = () => {
   const [title, setTitle] = useState("");
   const { addNewTodo, isMutating } = useTodoMutation({
     onAddSuccess() {
-      setTitle('')
+      setTitle("");
     },
   });
 
   return (
-    <div className={styles.addTodoInputContainer}>
+    <div
+      className={styles.addTodoInputContainer}
+      style={{ paddingRight: isMutating ? "1rem" : "0" }}
+    >
       <input
         type="text"
         placeholder="Add your todo... "
@@ -24,6 +28,7 @@ export const AddTodoInput = () => {
           }
         }}
       />
+      {isMutating && <LoadingSpinner width="24px" height="24px" />}
     </div>
   );
 };

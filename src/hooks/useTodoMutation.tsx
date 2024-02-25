@@ -41,7 +41,7 @@ export const useTodoMutation = (options?: Options) => {
     },
   });
 
-  const isMutating = updateTodo.isLoading || deleteTodo.isLoading;
+  const isMutating = updateTodo.isLoading || deleteTodo.isLoading || addNewTodo.isLoading;
 
   return {
     updateTodo,

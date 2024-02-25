@@ -1,15 +1,13 @@
 import { ComponentProps, useEffect, useRef, useState } from "react";
 import styles from "./TodoItem.module.scss";
-import { GgSpinner } from "../ui/Icon";
 import clsx from "clsx";
 import { useTodoMutation } from "../../hooks/useTodoMutation";
 import { Todo } from "../../lib/definition";
 import { Button } from "../ui/Button";
 import { TodoItemDropdownMenu } from "./TodoItemDropdownMenu";
+import { LoadingSpinner } from "../ui/LoadingSpiner";
 
 type InputMode = "Default" | "Edit";
-
-const LoadingSpinner = () => <GgSpinner className={styles.spinner} />;
 
 interface TextInputProps {
   title: string;
@@ -83,7 +81,11 @@ const CheckboxInput = ({
   return (
     <>
       <div
-        className={clsx(styles.todoItemCheckbox, isLoading && styles.textMuted)}
+        className={clsx(
+          styles.todoItemCheckbox,
+          isLoading && styles.textMuted,
+          completed && styles.textCompleted
+        )}
       >
         {isLoading && <LoadingSpinner />}
         {!isLoading && (
