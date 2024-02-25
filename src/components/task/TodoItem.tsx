@@ -1,4 +1,4 @@
-import { ComponentProps, useState } from "react";
+import { ComponentProps, useEffect, useRef, useState } from "react";
 import styles from "./TodoItem.module.scss";
 import GgSpinner from "../ui/Icon";
 import clsx from "clsx";
@@ -17,10 +17,19 @@ interface TextInputProps {
 
 const TextInput = ({ title, isLoading, onSubmit }: TextInputProps) => {
   const [newTitle, setNewTitle] = useState(title);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (inputRef) {
+      inputRef.current?.focus();
+    }
+  }, []);
+
   return (
     <div className={styles.todoItemTextInput}>
       {isLoading && <LoadingSpinner />}
       <input
+        ref={inputRef}
         type="text"
         className={styles.textInput}
         value={newTitle}
