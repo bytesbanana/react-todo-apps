@@ -49,7 +49,11 @@ export const TodoItemDropdownMenu = ({
 
   return (
     <div {...rest} className={clsx(styles.dropdownMenu, className)}>
-      <button ref={refs.setReference} {...getReferenceProps()} className={styles.trigger}>
+      <button
+        ref={refs.setReference}
+        {...getReferenceProps()}
+        className={styles.trigger}
+      >
         <ThreeDot />
       </button>
       {isOpen && (
@@ -63,12 +67,21 @@ export const TodoItemDropdownMenu = ({
           >
             <ul>
               <li>
-                <button onClick={() => onEditClick(todoId)}>Edit</button>
+                <button
+                  onClick={() => {
+                    onEditClick(todoId);
+                  }}
+                >
+                  Edit
+                </button>
               </li>
               <li>
                 <button
                   className={styles.danger}
-                  onClick={() => onDeleteClick(todoId)}
+                  onClick={() => {
+                    onDeleteClick(todoId);
+                    setIsOpen(false);
+                  }}
                 >
                   Delete
                 </button>

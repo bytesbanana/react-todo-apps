@@ -9,7 +9,7 @@ import { useMemo } from "react";
 import { AddTodoInput } from "./AddTodoInput";
 
 export const TodoList = () => {
-  const { data: todos, isLoading } = useQuery<Todo[]>("todos", () => {
+  const { data: todos, isLoading, status } = useQuery<Todo[]>("todos", () => {
     return apis.getTodos() || [];
   });
   const { visibilityFilter } = useTaskStore();
@@ -29,7 +29,7 @@ export const TodoList = () => {
     [todos, visibilityFilter]
   );
 
-  if (isLoading || !todos) {
+  if (isLoading || !todos && status !== 'error') {
     return <div>Loading...</div>;
   }
 
