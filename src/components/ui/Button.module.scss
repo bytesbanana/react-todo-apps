@@ -1,11 +1,14 @@
 .button {
   font-size: 0.875rem;
   padding: 0.625rem 1rem;
-  background-color: var(--primary-color);
+  background-color: hsl(var(--primary-color));
   color: var(--text-white);
   border: none;
   transition: all 150ms ease-in-out;
   &:active {
     scale: 95%;
+  }
+  &:disabled {
+    background-color: hsl(var(--primary-color), 0.7);
   }
 }

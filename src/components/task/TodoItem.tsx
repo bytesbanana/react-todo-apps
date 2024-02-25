@@ -14,9 +14,15 @@ interface TextInputProps {
   title: string;
   isLoading: boolean;
   onSubmit: (newTitle: string) => void;
+  onCancel: () => void;
 }
 
-const TextInput = ({ title, isLoading, onSubmit }: TextInputProps) => {
+const TextInput = ({
+  title,
+  isLoading,
+  onSubmit,
+  onCancel,
+}: TextInputProps) => {
   const [newTitle, setNewTitle] = useState(title);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -37,8 +43,15 @@ const TextInput = ({ title, isLoading, onSubmit }: TextInputProps) => {
         onChange={(e) => setNewTitle(e.target.value)}
         disabled={isLoading}
         onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            onSubmit(newTitle);
+          switch (e.key) {
+            case "Enter":
+              onSubmit(newTitle);
+              break;
+            case "Escape":
+              onCancel();
+              break;
+            default:
+              break;
           }
         }}
       />
@@ -134,6 +147,9 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
               title: newTitle,
             })
           }
+          onCancel={() => {
+            setMode("Default");
+          }}
         />
       )}
     </div>
