@@ -1,12 +1,12 @@
 import styles from "./TodoList.module.scss";
 import { useQuery } from "react-query";
 
-import { TodoItem } from "./TodoItem";
-import { Todo } from "../../lib/definition";
-import { useTaskStore } from "../../store/useTaskStore";
-import apis from "../../lib/apis";
+import { TodoItem } from "../todo-item/TodoItem";
+import { Todo } from "../../../lib/definition";
+import { useTaskStore } from "../../../store/useTaskStore";
+import apis from "../../../lib/apis";
 import { useMemo } from "react";
-import { AddTodoInput } from "./AddTodoInput";
+import { AddTodoInput } from "../add-todo-input/AddTodoInput";
 
 export const TodoList = () => {
   const { data: todos, isLoading, status } = useQuery<Todo[]>("todos", () => {

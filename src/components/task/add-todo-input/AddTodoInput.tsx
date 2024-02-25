@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useTodoMutation } from "../../hooks/useTodoMutation";
+import { useTodoMutation } from "../../../hooks/useTodoMutation";
 import styles from "./AddTodoInput.module.scss";
-import { LoadingSpinner } from "../ui/LoadingSpiner";
+import { LoadingSpinner } from "../../ui/loading-spinner/LoadingSpinner";
 
 export const AddTodoInput = () => {
   const [title, setTitle] = useState("");

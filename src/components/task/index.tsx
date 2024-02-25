@@ -1,4 +1,4 @@
-import { TodoList } from "./TodoList";
+import { TodoList } from "./todo-list/TodoList";
 import styles from "./Task.module.scss";
 import { VisibilityFilter, useTaskStore } from "../../store/useTaskStore";
 

@@ -10,7 +10,7 @@ import {
   autoPlacement,
   useTransitionStyles,
 } from "@floating-ui/react";
-import { ThreeDot } from "../ui/Icon";
+import { ThreeDot } from "../../ui/Icon";
 
 interface TodoItemDropdownMenuProps extends ComponentProps<"div"> {
   todoId: number;

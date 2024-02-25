@@ -1,11 +1,11 @@
 import { ComponentProps, useEffect, useRef, useState } from "react";
 import styles from "./TodoItem.module.scss";
 import clsx from "clsx";
-import { useTodoMutation } from "../../hooks/useTodoMutation";
-import { Todo } from "../../lib/definition";
-import { Button } from "../ui/Button";
-import { TodoItemDropdownMenu } from "./TodoItemDropdownMenu";
-import { LoadingSpinner } from "../ui/LoadingSpiner";
+import { useTodoMutation } from "../../../hooks/useTodoMutation";
+import { Todo } from "../../../lib/definition";
+import { Button } from "../../ui/button/Button";
+import { TodoItemDropdownMenu } from "../todo-item-dropdown-menu/TodoItemDropdownMenu";
+import { LoadingSpinner } from "../../ui/loading-spinner/LoadingSpinner";
 
 type InputMode = "Default" | "Edit";
 

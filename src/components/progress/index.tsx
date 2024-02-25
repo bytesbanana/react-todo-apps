@@ -1,4 +1,4 @@
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "./progress-bar/ProgressBar";
 import styles from "./Progress.module.scss";
 import { Todo } from "../../lib/definition";
 import { useQuery } from "react-query";

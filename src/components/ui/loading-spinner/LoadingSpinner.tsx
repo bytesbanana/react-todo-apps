@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { GgSpinner } from "./Icon";
+import { GgSpinner } from "../Icon";
 import styles from "./LoadingSpinner.module.scss";
 import { ComponentProps } from "react";
 
