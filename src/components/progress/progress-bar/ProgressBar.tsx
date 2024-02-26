@@ -1,17 +1,12 @@
 import { ComponentProps } from "react";
 import styles from "./ProgressBar.module.scss";
-import clsx from "clsx";
 
 interface ProgressBarProps extends ComponentProps<"div"> {
   progress: number;
 }
 
-const ProgressBar = ({ progress, className }: ProgressBarProps) => {
-  return (
-    <div className={clsx(className, styles.progress)}>
-      <div style={{ width: `${progress}%` }} />
-    </div>
-  );
+const ProgressBar = ({ progress }: ProgressBarProps) => {
+  return <progress className={styles.progress} value={progress} max={100} />;
 };
 
 export default ProgressBar;
