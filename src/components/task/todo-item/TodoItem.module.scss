@@ -6,9 +6,18 @@
   justify-content: space-between;
   box-shadow: 0px 0px 20px 0px #00000008;
   height: 2.875rem;
+
   input,
   button {
     cursor: pointer;
+  }
+
+  input {
+    accent-color: hsl(var(--primary-color));
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    width: 22px;
+    height: 22px;
   }
 }
 
